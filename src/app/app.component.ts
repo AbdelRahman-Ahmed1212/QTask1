@@ -13,17 +13,15 @@ import { RegExpLiteral } from '../../node_modules/@types/estree';
 })
 export class AppComponent {
 
-
-
   myFormGroup = new FormGroup({
     firstInput:new FormControl(
-      '',Validators.pattern(/^[a-zA-Z0-9 ]*$/)
+      '',[Validators.pattern(/^[a-zA-Z0-9 ]*$/),Validators.required]
     ),
     secondInput:new FormControl(
-      '',Validators.pattern(/^[^0-9]*$/)
+      '',[Validators.pattern(/^[^0-9]*$/),Validators.required]
     ),
     thirdInput:new FormControl(
-    '',Validators.pattern(/^[^\u0600-\u06FF\u0750-\u077F]*$/)
+    '',[Validators.pattern(/^[^\u0600-\u06FF\u0750-\u077F]*$/),Validators.required]
     )
   })
 

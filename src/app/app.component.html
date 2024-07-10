@@ -1,15 +1,25 @@
-<form [formGroup]="myFormGroup">
+<form [formGroup]="myFormGroup" #myform="ngForm">
     <input type="text" formControlName="firstInput" placeholder="Enter none special chars" class="form-control m-2">
-    <div *ngIf="myFormGroup.controls.firstInput.invalid" class="alert alert-danger">
-        special chars are not allowed
+    <div *ngIf="myFormGroup.controls.firstInput.errors?.['pattern']" class="alert alert-danger">
+        special chars not allowed
     </div>
+    <div *ngIf="myFormGroup.controls.firstInput.errors?.['required'] && myform.submitted" class="alert alert-danger">
+        this field is not required
+    </div>
+
     <input type="text" formControlName="secondInput" placeholder="Enter not a number input " class="form-control m-2">
-    <div *ngIf="myFormGroup.controls.secondInput.invalid" class="alert alert-danger">
+    <div *ngIf="myFormGroup.controls.secondInput.errors?.['pattern']" class="alert alert-danger">
         numbers are not allowed
     </div>
+    <div *ngIf="myFormGroup.controls.firstInput.errors?.['required'] && myform.submitted" class="alert alert-danger">
+        this field is not required
+    </div>
     <input type="text" formControlName="thirdInput" placeholder="Enter non Arabic Chars" class="form-control m-2">
-    <div *ngIf="myFormGroup.controls.thirdInput.invalid" class="alert alert-danger">
+    <div *ngIf="myFormGroup.controls.thirdInput.errors?.['pattern']" class="alert alert-danger">
         Arabic Characters are not allowed
+    </div>
+    <div *ngIf="(myFormGroup.controls.firstInput.errors?.['required']) && myform.submitted " class="alert alert-danger">
+        this field is not required
     </div>
     <input type="submit" />
 </form>
