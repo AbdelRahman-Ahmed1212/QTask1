@@ -13,9 +13,6 @@ import { RegExpLiteral } from '../../node_modules/@types/estree';
 })
 export class AppComponent {
 
-  noneSpecials:any=/^[a-zA-Z0-9 ]*$/;
-  Numbers:any = /^[0-9]*$/
-  ArabicCodes:any = /[\u0600-\u06FF\u0750-\u077F]/
 
 
   myFormGroup = new FormGroup({
