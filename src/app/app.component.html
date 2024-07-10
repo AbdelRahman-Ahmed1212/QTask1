@@ -1,25 +1,9 @@
 <form [formGroup]="myFormGroup" #myform="ngForm">
-    <input type="text" formControlName="firstInput" placeholder="Enter none special chars" class="form-control m-2">
-    <div *ngIf="myFormGroup.controls.firstInput.errors?.['pattern']" class="alert alert-danger">
-        special chars not allowed
-    </div>
-    <div *ngIf="myFormGroup.controls.firstInput.errors?.['required'] && myform.submitted" class="alert alert-danger">
-        this field is required
-    </div>
+    <input type="text" formControlName="firstInput" placeholder="Enter none special chars" class="form-control m-2" appNoSCharaterValidator pattern="^[a-zA-Z0-9 ]*$">
 
-    <input type="text" formControlName="secondInput" placeholder="Enter not a number input " class="form-control m-2">
-    <div *ngIf="myFormGroup.controls.secondInput.errors?.['pattern']" class="alert alert-danger">
-        numbers are not allowed
-    </div>
-    <div *ngIf="myFormGroup.controls.firstInput.errors?.['required'] && myform.submitted" class="alert alert-danger">
-        this field is required
-    </div>
-    <input type="text" formControlName="thirdInput" placeholder="Enter non Arabic Chars" class="form-control m-2">
-    <div *ngIf="myFormGroup.controls.thirdInput.errors?.['pattern']" class="alert alert-danger">
-        Arabic Characters are not allowed
-    </div>
-    <div *ngIf="(myFormGroup.controls.firstInput.errors?.['required']) && myform.submitted " class="alert alert-danger">
-        this field is required
-    </div>
+    <input type="text" formControlName="secondInput" placeholder="Enter not a number input " class="form-control m-2" appNoSCharaterValidator pattern="^[^0-9]*$">
+
+    <input type="text" formControlName="thirdInput" placeholder="Enter non Arabic Chars" class="form-control m-2" appNoSCharaterValidator pattern="^[^\u0600-\u06FF\u0750-\u077F]*$">
+
     <input type="submit" />
 </form>
