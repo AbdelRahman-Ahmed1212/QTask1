@@ -1,3 +1,15 @@
-<input type="text" (keydown)='inputOnePressed($event)' placeholder="Enter none special chars" class="form-control m-2">
-<input type="text" (keydown)='inputTwoPressed($event)' placeholder="Enter Letters Only Letters Only" class="form-control m-2">
-<input type="text" (keydown)='noArabicChars($event)' placeholder="Enter non Arabic Chars" class="form-control m-2">
+<form [formGroup]="myFormGroup">
+    <input type="text" formControlName="firstInput" placeholder="Enter none special chars" class="form-control m-2">
+    <div *ngIf="myFormGroup.controls.firstInput.invalid" class="alert alert-danger">
+        special chars are not allowed
+    </div>
+    <input type="text" formControlName="secondInput" placeholder="Enter not a number input " class="form-control m-2">
+    <div *ngIf="myFormGroup.controls.secondInput.invalid" class="alert alert-danger">
+        numbers are not allowed
+    </div>
+    <input type="text" formControlName="thirdInput" placeholder="Enter non Arabic Chars" class="form-control m-2">
+    <div *ngIf="myFormGroup.controls.thirdInput.invalid" class="alert alert-danger">
+        Arabic Characters are not allowed
+    </div>
+    <input type="submit" />
+</form>
